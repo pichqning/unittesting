@@ -18,11 +18,5 @@ public class ListUtil {
         }
         return unique.size();
     }
-
-    public static void main (String[] args) {
-        List<Object> list = new ArrayList<>();
-        list.add("0");
-        list.add(0);
-        System.out.println(countUnique(list));
-    }
+    
 }
