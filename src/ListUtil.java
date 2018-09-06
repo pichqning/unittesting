@@ -1,5 +1,7 @@
 
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.function.BinaryOperator;
 
 public class ListUtil {
     /**
@@ -19,4 +21,23 @@ public class ListUtil {
         return unique.size();
     }
 
+    //TODO write good method Javadoc
+    public static <T extends Comparable<? super T>> int binarySearch(T[] array,T element) {
+        Arrays.sort(array);
+        int l = 0, r = array.length - 1;
+        while (l <= r)
+        {
+            int index = l + (r-l)/2;
+            if (array[index] == element)
+                return index;
+            l++;
+        }
+        return -1;
+    }
+
+    public static void main (String[] args) {
+        String[] a = {"1","2","3","4"};
+        System.out.println(binarySearch(a,"3"));
+
+    }
 }
