@@ -21,7 +21,12 @@ public class ListUtil {
         return unique.size();
     }
 
-    //TODO write good method Javadoc
+    /**
+     * Searching the index of the element by using bisection methods.
+     * @param array
+     * @param element
+     * @return index of the searched element.
+     */
     public static <T extends Comparable<? super T>> int binarySearch(T[] array,T element) {
         Arrays.sort(array);
         int l = 0, r = array.length - 1;
@@ -34,10 +39,5 @@ public class ListUtil {
         }
         return -1;
     }
-
-    public static void main (String[] args) {
-        String[] a = {"1","2","3","4"};
-        System.out.println(binarySearch(a,"3"));
-
-    }
+    
 }
