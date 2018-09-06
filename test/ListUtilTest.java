@@ -1,6 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +14,7 @@ public class ListUtilTest {
      * @author Pichaaun Popukdee
      */
 
-    private List<?> makeList(Object... ele) {
+    private List<Object> makeList(Object... ele) {
         return java.util.Arrays.asList(ele);
     }
 
@@ -32,9 +34,11 @@ public class ListUtilTest {
 
     @Test
     public void testImpossible () {
+        List<?> a = null;
         boolean possible = true ;
-        try {
-            ListUtil.countUnique(makeList(true,"0",0));
+        try
+        {
+            ListUtil.countUnique(a);
         }
         catch (Exception e) {
             possible = false;
@@ -49,9 +53,16 @@ public class ListUtilTest {
 
     @Test
     public void testHugeList () {
-        assertEquals(2,ListUtil.countUnique(makeList(
-                "a","a","a","a","a","a","a","a","a",
-                "b","b","b","b","b","b","b","b","b","b","b","b","b")));
+        String cha = "abcd";
+        List<Character> list = new ArrayList<>();
+        int count = 100_000;
+        Random ran = new Random();
+        while (count > 0) {
+            list.add(cha.charAt(ran.nextInt(4)));
+            count--;
+        }
+
+        assertEquals(4,ListUtil.countUnique(list));
 
     }
 

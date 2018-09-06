@@ -11,10 +11,18 @@ public class ListUtil {
      * @return the number of distinct elements in list
      */
     public static int countUnique(List<?> list) {
-        Set<String> unique = new HashSet<>();
+        if (list == null) throw new NullPointerException();
+        Set<Object> unique = new HashSet<>();
         for (Object temp : list) {
-            unique.add((String) temp);
+            unique.add( temp);
         }
         return unique.size();
+    }
+
+    public static void main (String[] args) {
+        List<Object> list = new ArrayList<>();
+        list.add("0");
+        list.add(0);
+        System.out.println(countUnique(list));
     }
 }
