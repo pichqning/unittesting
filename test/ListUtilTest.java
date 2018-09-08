@@ -95,6 +95,7 @@ public class ListUtilTest {
             ListUtil.binarySearch(arrayNull, "1");
         } catch (IllegalArgumentException e) {
             ex = true;
+            assertEquals("Search element must not be null." , e.getMessage());
         }
         assertTrue(ex);
     }
