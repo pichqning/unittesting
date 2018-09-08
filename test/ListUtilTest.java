@@ -1,6 +1,4 @@
 import org.junit.Test;
-
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -91,10 +89,10 @@ public class ListUtilTest {
 
     @Test
     public void testThrowException () {
-        String[] arraynull = null;
+        String[] arrayNull = null;
         boolean ex = false;
         try {
-            ListUtil.binarySearch(arraynull , "1");
+            ListUtil.binarySearch(arrayNull , "1");
         } catch (IllegalArgumentException e ) {
             ex = true;
         }
