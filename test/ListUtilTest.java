@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,7 +24,6 @@ public class ListUtilTest {
         assertEquals(1, ListUtil.countUnique(makeList("a")));
         assertEquals(0, ListUtil.countUnique(makeList()));
         assertEquals(2, ListUtil.countUnique(makeList(null, "1")));
-
     }
 
     @Test
@@ -64,6 +64,41 @@ public class ListUtilTest {
 
         assertEquals(4,ListUtil.countUnique(list));
 
+    }
+
+    //Binary search
+
+    private static final Integer[] array
+            = { 1, 2, 3, 5, 8, 13, 21, 34, 55 };
+    private static final String[] array2
+            = { "a" ,"b" ,"z","d" , "c", "t"};
+    @Test
+    public void testFindIndex () {
+        assertEquals(8,ListUtil.binarySearch(array,55));
+        assertEquals(0,ListUtil.binarySearch(array,1));
+        assertEquals(5 , ListUtil.binarySearch(array2,"z"));
+        assertEquals(3 , ListUtil.binarySearch(array2,"d"));
+        String[] a = {""};
+        assertEquals(0,ListUtil.binarySearch(a,""));
+
+    }
+
+    @Test
+    public void testPointNotFound () {
+        assertEquals(-1,ListUtil.binarySearch(array,100));
+        assertEquals(-1,ListUtil.binarySearch(array2, "r"));
+    }
+
+    @Test
+    public void testThrowException () {
+        String[] arraynull = null;
+        boolean ex = false;
+        try {
+            ListUtil.binarySearch(arraynull , "1");
+        } catch (IllegalArgumentException e ) {
+            ex = true;
+        }
+        assertTrue(ex);
     }
 
 }

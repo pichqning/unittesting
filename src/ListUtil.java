@@ -1,5 +1,6 @@
 
 import java.lang.reflect.Array;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.function.BinaryOperator;
 
@@ -27,17 +28,22 @@ public class ListUtil {
      * @param element
      * @return index of the searched element.
      */
-    public static <T extends Comparable<? super T>> int binarySearch(T[] array,T element) {
+    public static <T extends Comparable<? super T>> int binarySearch(T[] array,T element){
+        if (array == null) throw new IllegalArgumentException("Search element must not be null.");
+        int first = 0;
+        int last  = array.length;
         Arrays.sort(array);
-        int l = 0, r = array.length - 1;
-        while (l <= r)
-        {
-            int index = l + (r-l)/2;
-            if (array[index] == element)
-                return index;
-            l++;
+        while (first < last) {
+            int mid = first + ((last - first) / 2);
+            if (element.compareTo(array[mid]) < 0) {
+                last = mid;
+            } else if (element.compareTo(array[mid]) > 0) {
+                first = mid + 1;
+            } else {
+                return mid;
+            }
         }
         return -1;
     }
-    
+
 }
